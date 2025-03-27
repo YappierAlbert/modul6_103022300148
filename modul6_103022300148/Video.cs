@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
@@ -14,16 +15,16 @@ namespace modul6_103022300148
         Random rd = new Random();
         public SayaTubeVideo(string title)
         {
-            Contract.Requires(title.Length <= 200,"judul tidak boleh lebih dari 200 karakter");
-            Contract.Requires(title != "","judul tidak boleh kosong");
+            Debug.Assert(title.Length <= 200,"judul tidak boleh lebih dari 200 karakter");
+            Debug.Assert(title != "","judul tidak boleh kosong");
             id = rd.Next(10000, 99999);
             this.title = title;
             playCount = 0;
         }
         public void increasePlayCount(int x)
         {
-            Contract.Requires(x <= 25000000,"penambahan view tidak boleh lebih dari 25juta sekaligus");
-            Contract.Requires(x > 0,"penambahan view tidak boleh dibawah 0");
+            Debug.Assert(x <= 25000000,"penambahan view tidak boleh lebih dari 25juta sekaligus");
+            Debug.Assert(x > 0,"penambahan view tidak boleh dibawah 0");
             try
             {
                 checked
